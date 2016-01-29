@@ -63,6 +63,7 @@ build/
 build.properties
 junit*.properties
 
+.idea
 
 # User-specific stuff:
 .idea/workspace.xml
