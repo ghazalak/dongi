@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="#ff857d8b"
+            >
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="chi khordim?"
+                  android:id="@+id/textName"
+                  android:textColor="#ffffff"
+                  android:textSize="30sp"
+                  android:layout_marginTop="30dp"
+                />
+        <EditText android:layout_width="180dp"
+                  android:layout_height="40dp"
+                  android:text=""
+                  android:id="@+id/editName"
+
+                />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="chanta khordim?"
+                  android:id="@+id/textNum"
+                  android:textColor="#ffffff"
+                  android:textSize="30sp"
+                />
+        <EditText android:layout_width="180dp"
+                  android:layout_height="40dp"
+                  android:hint="chanta khordim?"
+                  android:id="@+id/editNum"
+                  android:numeric="integer"
+                />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="chand khordim?"
+                  android:id="@+id/textAmount"
+                  android:textColor="#ffffff"
+                  android:textSize="30sp"
+                />
+        <EditText android:layout_width="180dp"
+                  android:layout_height="40dp"
+                  android:hint="chand shod?"
+                  android:id="@+id/editAmount"
+                  android:numeric="integer"
+                />
+        <Button android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:text="taeed"
+                android:id="@+id/taeedBTN"
+                android:layout_marginTop="30dp"
+                android:background="#ff8b626c"
+                android:textColor="#ff8b000a"
+                />
+        <Button android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:text="bazgasht"
+                android:id="@+id/back"
+                android:layout_marginTop="30dp"
+                android:background="#ff8b626c"
+                android:textColor="#ff8b000a"
+                android:onClick="btn2"
+                />
+    </LinearLayout>
