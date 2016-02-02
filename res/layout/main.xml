@@ -38,7 +38,7 @@
         <Button android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:text="edame"
-                android:id="@+id/Continue"
+                android:id="@+id/btnContinue"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="30dp"
@@ -46,11 +46,11 @@
         <Button android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@android:drawable/ic_input_add"
-                android:id="@+id/add"
+                android:id="@+id/goToAddFoodRow"
                 android:layout_gravity="left"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="30dp"
-                android:onClick="btn1"
+                android:onClick="btnAddClickHandler"
                 />
     </RelativeLayout>
 

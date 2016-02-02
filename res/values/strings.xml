@@ -5,4 +5,7 @@
     <string name="name">name</string>
     <string name="qty">qty</string>
     <string name="price">price</string>
+    <!--<string name="nameBack">nameBack</string>-->
+    <!--<string name="qtyBack">qtyBack</string>-->
+    <!--<string name="priceBack">priceBack</string>-->
 </resources>

@@ -12,7 +12,7 @@
             <TextView
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:id="@+id/name"
+                    android:id="@+id/foodName"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:editable="true"
@@ -20,21 +20,21 @@
             <TextView
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:id="@+id/num"
+                    android:id="@+id/foodQty"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/name"
+                    android:layout_below="@id/foodName"
                     android:layout_marginLeft="30dp"
                     />
             <TextView
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:id="@+id/fi"
+                    android:id="@+id/foodPrice"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_below="@id/name"
-                    android:layout_toRightOf="@id/num"
+                    android:layout_below="@id/foodName"
+                    android:layout_toRightOf="@id/foodQty"
                     android:layout_marginLeft="30dp"
                     />
             <Button android:layout_width="50dp"
@@ -42,10 +42,11 @@
                     android:id="@+id/addContact"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/people"
+                    android:onClick="btnSelectContact"
                     />
             <Button android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:id="@+id/edit"
+                    android:id="@+id/editFoodRow"
                     android:layout_toLeftOf="@id/addContact"
                     android:text="edit"
                     android:onClick="editButtonClickHandler"

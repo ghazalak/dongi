@@ -3,34 +3,29 @@ package com.example.dongi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.View;
 import android.widget.*;
 
-/**
- * Created by ghazal on 2/1/2016.
- */
-public class changedataActivity extends Activity {
+public class changeOrAddFoodActivity extends Activity {
         boolean check=true;
         @Override
         public void onCreate(Bundle bdl){
             super.onCreate(bdl);
-            setContentView(R.layout.getdata);
+            setContentView(R.layout.changedata);
             if (getIntent()!= null) {
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    ((EditText) findViewById(R.id.editName)).setText(extras.getString("name"));
-                    ((EditText) findViewById(R.id.editNum)).setText(extras.getString("qty"));
-                    ((EditText) findViewById(R.id.editAmount)).setText(extras.getString("price"));
+                    ((EditText) findViewById(R.id.NameAddEditFood)).setText(extras.getString("name"));
+                    ((EditText) findViewById(R.id.qtyAddEditFood)).setText(extras.getString("qty"));
+                    ((EditText) findViewById(R.id.priceAddEditFood)).setText(extras.getString("price"));
                 }
             }
-            Button btn=(Button) findViewById(R.id.taeedBTN);
+            Button btn=(Button) findViewById(R.id.btnTaeedAddEditFood);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    EditText txtName = (EditText) findViewById(R.id.editName);
+                    EditText txtName = (EditText) findViewById(R.id.NameAddEditFood);
                     String strUserName = txtName.getText().toString();
 
                     if(TextUtils.isEmpty(strUserName)) {
@@ -38,7 +33,7 @@ public class changedataActivity extends Activity {
                         check=false;
                         return;
                     }
-                    EditText txtNum = (EditText) findViewById(R.id.editNum);
+                    EditText txtNum = (EditText) findViewById(R.id.qtyAddEditFood);
                     String strNum = txtNum.getText().toString();
 
                     if(TextUtils.isEmpty(strNum)) {
@@ -46,7 +41,7 @@ public class changedataActivity extends Activity {
                         check=false;
                         return;
                     }
-                    EditText txtAmount = (EditText) findViewById(R.id.editAmount);
+                    EditText txtAmount = (EditText) findViewById(R.id.priceAddEditFood);
                     String strAmount = txtAmount.getText().toString();
 
                     if(TextUtils.isEmpty(strAmount)) {
@@ -54,16 +49,21 @@ public class changedataActivity extends Activity {
                         check=false;
                         return;
                     }
-                    txtName.getText();
                     if(check==true){
-                        //  TextView txt=(TextView) findViewById(R.id.name);
-                        // txtName.setText(R.id.name, null);
+//                        public void btnBackClickHandler(View view) {
+//                            Intent intent = new Intent(this, dongiActivity.class);
+//                            intent.putExtra("nameBack", (String)view.getTag(R.string.name));
+//                            intent.putExtra("qtyBack", (String)view.getTag(R.string.qty));
+//                            intent.putExtra("priceBack", (String) view.getTag(R.string.price));
+//
+//                            startActivity(intent);
+//                        }
                     }
                 }
             });
 
         }
-        public void btn2(View view) {
+        public void btnBackToFoodList(View view) {
             finish();
         }
 }
