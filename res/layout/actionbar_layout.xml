@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:background="#ffffa74a"
+        >
+    <Button android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:text="بازگشت"
+            android:id="@+id/btnBackAddEditFood"
+            android:layout_centerVertical="true"
+            android:onClick="btnBackToFoodList"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            />
+<TextView android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:text="به دنگ"
+          android:id="@+id/actionbarText"
+          android:textColor="#ff000000"
+          android:textSize="20sp"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true"
+          android:gravity="center"
+        />
+    <Button android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:text="تایید"
+            android:id="@+id/btnTaeedAddEditFood"
+            android:layout_centerVertical="true"
+            android:onClick="btnBackClickHandler"
+            android:layout_marginLeft="30dp"
+            />
+</RelativeLayout>

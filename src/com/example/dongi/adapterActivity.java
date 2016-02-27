@@ -7,22 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 public class adapterActivity extends ArrayAdapter<String> {
     Context maincontext;
-    String[] ArrayName;
-    String[] Arrayqty;
-    String[] ArrayPrice;
-    public adapterActivity(Context context, String[] item, String[] tedad, String[] price){
-        super(context,R.layout.list_row,price);
+    ArrayList<String> ArrayName;
+    ArrayList<String> Arrayqty;
+    ArrayList<String> ArrayPrice;
+    public adapterActivity(Context context, ArrayList<String> items, ArrayList<String> qtys, ArrayList<String> prices){
+        super(context,R.layout.list_row,prices);
         maincontext = context;
-        ArrayName = item;
-        Arrayqty =tedad;
-        ArrayPrice =price;
+        ArrayName = items;
+        Arrayqty =qtys;
+        ArrayPrice =prices;
     }
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup)
-    {
+    public View getView(int position, View view, ViewGroup viewGroup){
         LayoutInflater layoutInflater = LayoutInflater.from(maincontext);
 
         View row = layoutInflater.inflate(R.layout.list_row, null, true);
@@ -30,20 +30,14 @@ public class adapterActivity extends ArrayAdapter<String> {
         TextView textView1 = (TextView) row.findViewById(R.id.foodQty);
         TextView textView2 = (TextView) row.findViewById(R.id.foodPrice);
         Button edit = (Button) row.findViewById(R.id.editFoodRow);
-        textView.setText(ArrayName[position]);
-        textView1.setText(Arrayqty[position]);
-        textView2.setText(ArrayPrice[position]);
+        textView.setText(ArrayName.get(position));
+        textView1.setText(Arrayqty.get(position));
+        textView2.setText(ArrayPrice.get(position));
 
-        edit.setTag(R.string.name, ArrayName[position]);
-        edit.setTag(R.string.qty, Arrayqty[position]);
-        edit.setTag(R.string.price, ArrayPrice[position]);
-
-
-//        edit.setTag(R.string.nameBack, ArrayName[position]);
-//        edit.setTag(R.string.qtyBack, Arrayqty[position]);
-//        edit.setTag(R.string.priceBack, ArrayPrice[position]);
-
+        edit.setTag(R.string.name, ArrayName.get(position));
+        edit.setTag(R.string.qty, Arrayqty.get(position));
+        edit.setTag(R.string.price, ArrayPrice.get(position));
+        edit.setTag(R.string.position, String.valueOf(position));
         return row;
-
     }
 }

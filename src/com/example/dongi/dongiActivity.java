@@ -1,22 +1,43 @@
 package com.example.dongi;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+import android.widget.EditText;
+
+
 public class dongiActivity extends Activity {
-    String[] items={"ice-cream","hot chocolate","cake","coffee","nescafe","cheese cake","water"};
-    String[] tedad={"1","2","3","4","5","6","7"};
-    String[] gheimat={"1000","2000","3000","4000","5000","6000","7000"};
+    static  ArrayList<String> items = new ArrayList<String>();
+    static  ArrayList<String> qtys = new ArrayList<String>();
+    static  ArrayList<String> prices = new ArrayList<String>();
+    final Context context=this;
     @Override
     public void onCreate(Bundle bdl) {
         super.onCreate(bdl);
         setContentView(R.layout.main);
-        adapterActivity adapter = new adapterActivity(this, items, tedad, gheimat);
+        adapterActivity adapter = new adapterActivity(this, items, qtys, prices);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
+
+//actionBar
+//        ActionBar actionBar=getActionBar();
+//        LayoutInflater inflater=getLayoutInflater();
+//        actionBar.setDisplayShowHomeEnabled(false);
+//        actionBar.setDisplayShowTitleEnabled(false);
+//        View actionbar_view=inflater.inflate(R.layout.actionbar_layout,null);
+//        actionBar.setCustomView(actionbar_view);
+//        actionBar.setDisplayShowCustomEnabled(true);
+
+
+
         Button btn = (Button) findViewById(R.id.takePic);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,20 +46,48 @@ public class dongiActivity extends Activity {
                 startActivity(intent);
             }
         });
+//        Button btnAdd=(Button)findViewById(R.id.goToAddFoodRow);
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final Dialog dialog=new Dialog(context);
+//                dialog.setContentView(R.layout.changedata);
+//                dialog.setTitle("Ê—Êœ «ÿ·«⁄« ");
+//
+//
+//            }
+//        });
+//        Toast.makeText(getApplicationContext(), "Your toast message",
+//                Toast.LENGTH_LONG).show();
     }
-
     public void btnAddClickHandler(View view) {
         Intent intent = new Intent(this, changeOrAddFoodActivity.class);
-        startActivity(intent);
-//        if (getIntent()!= null) {
-//            Bundle extras = getIntent().getExtras();
-//            if (extras != null) {
-//                ((TextView) findViewById(R.id.foodName)).setText(extras.getString("nameBack"));
-//                ((TextView) findViewById(R.id.foodQty)).setText(extras.getString("qtyBack"));
-//                ((TextView) findViewById(R.id.foodPrice)).setText(extras.getString("priceBack"));
-//            }
-//        }
+        startActivityForResult(intent, 1);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
 
+        if (resultCode == dongiActivity.RESULT_OK) {
+            if (requestCode == 1) {
+                items.add(data.getStringExtra("nameBack"));
+                qtys.add(data.getStringExtra(("qtyBack")));
+                prices.add(data.getStringExtra("priceBack"));
+
+            } else if (requestCode == 2) {
+                int position = Integer.valueOf(data.getStringExtra("position"));
+                items.set(position, data.getStringExtra("nameBack"));
+                qtys.set(position, data.getStringExtra(("qtyBack")));
+                prices.set(position, data.getStringExtra("priceBack"));
+            }
+            adapterActivity adapter = new adapterActivity(this, items, qtys, prices);
+            ListView listView = (ListView) findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }
+        if (resultCode == dongiActivity.RESULT_CANCELED) {
+            //Write your code if there's no result
+//                Toast.makeText(getApplicationContext(),"3",Toast.LENGTH_LONG).show();
+        }
     }
     public void btnSelectContact(View view) {
         Intent intent = new Intent(this, contactsActivity.class);
@@ -47,18 +96,10 @@ public class dongiActivity extends Activity {
     public void editButtonClickHandler(View view) {
         Intent intent = new Intent(this, changeOrAddFoodActivity.class);
         intent.putExtra("name", (String)view.getTag(R.string.name));
+        String s = (String) view.getTag(R.string.position);
+        intent.putExtra("position", (String) view.getTag(R.string.position));
         intent.putExtra("qty", (String)view.getTag(R.string.qty));
         intent.putExtra("price", (String) view.getTag(R.string.price));
-
-        startActivity(intent);
-
-//        if (getIntent()!= null) {
-//            Bundle extras = getIntent().getExtras();
-//            if (extras != null) {
-//                ((TextView) findViewById(R.id.foodName)).setText(extras.getString("nameBack"));
-//                ((TextView) findViewById(R.id.foodQty)).setText(extras.getString("qtyBack"));
-//                ((TextView) findViewById(R.id.foodPrice)).setText(extras.getString("priceBack"));
-//            }
-//        }
+        startActivityForResult(intent,2);
     }
 }

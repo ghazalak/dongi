@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+        android:id="@+id/tableLayout">
     <TableRow android:layout_width="match_parent"
               android:layout_height="match_parent">
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#ff8a888b"
                 >
             <TextView
-                    android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:id="@+id/foodName"
                     android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
                     android:editable="true"
                     />
             <TextView
-                    android:textColor="#ffffff"
                     android:textSize="20dp"
                     android:id="@+id/foodQty"
                     android:layout_height="wrap_content"
@@ -28,7 +26,6 @@
                     android:layout_marginLeft="30dp"
                     />
             <TextView
-                    android:textColor="#ffffff"
                     android:textSize="20dp"
                     android:id="@+id/foodPrice"
                     android:layout_height="wrap_content"
@@ -44,7 +41,7 @@
                     android:background="@drawable/people"
                     android:onClick="btnSelectContact"
                     />
-            <Button android:layout_width="50dp"
+            <Button android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:id="@+id/editFoodRow"
                     android:layout_toLeftOf="@id/addContact"
