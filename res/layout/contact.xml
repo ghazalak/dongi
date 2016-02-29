@@ -3,26 +3,31 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="بازگشت"
-            android:id="@+id/addPeopleBack"
-
-            />
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="ادامه"
-            android:id="@+id/addPeopleContinue"
-
-            />
-    <NumberPicker
+    <!--<Button android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="بازگشت"-->
+            <!--android:id="@+id/addPeopleBack"-->
+            <!--android:onClick="btnBackToFoodListFromContacts"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--/>-->
+    <!--<Button android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:text="ثبت تغییرات"-->
+            <!--android:id="@+id/addPeopleContinue"-->
+            <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_below="@id/addPeopleContinue"-->
+            <!--/>-->
+    <com.example.dongi.NumberPickerCustom
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numberPicker"
-            android:layout_below="@id/addPeopleContinue"
+            android:id="@+id/numberPicker1"
             android:layout_alignParentRight="true"
-            
+            min="0"
+            max="10"
             />
 </RelativeLayout>

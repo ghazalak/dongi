@@ -15,37 +15,58 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:editable="true"
+                    android:layout_alignParentRight="true"
+                    />
+            <TextView
+                    android:textSize="20dp"
+                    android:id="@+id/foodQtyNotice"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/foodName"
+                    android:layout_marginRight="5dp"
+                    android:text="تعداد: "
                     />
             <TextView
                     android:textSize="20dp"
                     android:id="@+id/foodQty"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@id/foodName"
-                    android:layout_marginLeft="30dp"
+                    android:layout_toLeftOf="@id/foodQtyNotice"
                     />
+
+                <TextView
+                        android:textSize="20dp"
+                        android:id="@+id/foodPriceNotice"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@id/foodName"
+                        android:layout_toLeftOf="@id/foodQty"
+                        android:layout_marginRight="20dp"
+                        android:text="قیمت: "
+                        />
             <TextView
                     android:textSize="20dp"
                     android:id="@+id/foodPrice"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_below="@id/foodName"
-                    android:layout_toRightOf="@id/foodQty"
-                    android:layout_marginLeft="30dp"
+                    android:layout_toLeftOf="@id/foodPriceNotice"
                     />
+
             <Button android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:id="@+id/addContact"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
                     android:background="@drawable/people"
                     android:onClick="btnSelectContact"
                     />
-            <Button android:layout_width="60dp"
+            <Button android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:id="@+id/editFoodRow"
-                    android:layout_toLeftOf="@id/addContact"
-                    android:text="edit"
+                    android:layout_toRightOf="@id/addContact"
+                    android:text="تغییر"
                     android:onClick="editButtonClickHandler"
                     />
 
