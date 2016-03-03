@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-public class contactsActivity extends Activity{
+public class ContactsActivity extends Activity{
     @Override
     public void onCreate(Bundle bdl){
         super.onCreate(bdl);
@@ -28,7 +28,7 @@ public class contactsActivity extends Activity{
     }
 //    @Override
 //    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//        Toast.makeText(contactsActivity.this, "number", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ContactsActivity.this, "number", Toast.LENGTH_SHORT).show();
 //    }
     public void btnBackToFoodList(View view ) {
         Intent returnIntent = new Intent();

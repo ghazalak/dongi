@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class adapterActivity extends ArrayAdapter<String> {
+public class AdapterActivity extends ArrayAdapter<String> {
     Context maincontext;
     ArrayList<String> ArrayName;
     ArrayList<String> Arrayqty;
     ArrayList<String> ArrayPrice;
-    public adapterActivity(Context context, ArrayList<String> items, ArrayList<String> qtys, ArrayList<String> prices){
+    public AdapterActivity(Context context, ArrayList<String> items, ArrayList<String> qtys, ArrayList<String> prices){
         super(context,R.layout.list_row,prices);
         maincontext = context;
         ArrayName = items;

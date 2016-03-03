@@ -9,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
-import java.util.zip.Inflater;
-
-public class changeOrAddFoodActivity extends Activity {
+public class ChangeOrAddFoodActivity extends Activity {
     boolean nameCheck=true;
     boolean qtyCheck=true;
     boolean priceCheck=true;
@@ -79,10 +77,10 @@ public class changeOrAddFoodActivity extends Activity {
                         intent.putExtra("priceBack", strPrice);
                         intent.putExtra("position", position);
                         if (getParent() == null) {
-                            setResult(dongiActivity.RESULT_OK, intent);
+                            setResult(DongiActivity.RESULT_OK, intent);
                         }
                         else {
-                            getParent().setResult(dongiActivity.RESULT_OK, intent);
+                            getParent().setResult(DongiActivity.RESULT_OK, intent);
                         }
                         finish();
                     }
