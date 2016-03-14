@@ -68,7 +68,8 @@ public class ChangeOrAddFoodActivity extends Activity {
                             priceCheck = false;
                             return;
                         }else priceCheck=true;
-                    }while (nameCheck==false || qtyCheck==false || priceCheck==false);
+                    }
+                    while (nameCheck==false || qtyCheck==false || priceCheck==false);
 
                     if(nameCheck==true && qtyCheck==true && priceCheck==true){
                         Intent intent = new Intent();

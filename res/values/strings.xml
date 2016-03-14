@@ -6,4 +6,6 @@
     <string name="qty">qty</string>
     <string name="price">price</string>
     <string name="position">position</string>
+    <string name="qtyFirst">qtyFirst</string>
+
 </resources>
