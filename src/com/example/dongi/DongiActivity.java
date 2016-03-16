@@ -48,7 +48,7 @@ public class DongiActivity extends Activity {
 //            public void onClick(View view) {
 //                final Dialog dialog=new Dialog(context);
 //                dialog.setContentView(R.layout.changedata);
-//                dialog.setTitle("æÑæÏ ÇØáÇÚÇÊ");
+//                dialog.setTitle("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 //
 //
 //            }

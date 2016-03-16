@@ -26,7 +26,7 @@ public class ContactsActivity extends Activity{
 //        np.setOnValueChangedListener(this);
 
     }
-//    @Override
+    //    @Override
 //    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 //        Toast.makeText(ContactsActivity.this, "number", Toast.LENGTH_SHORT).show();
 //    }
