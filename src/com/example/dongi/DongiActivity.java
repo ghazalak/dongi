@@ -18,6 +18,9 @@ public class DongiActivity extends Activity {
     @Override
     public void onCreate(Bundle bdl) {
         super.onCreate(bdl);
+        items.add("salam");
+        qtys.add("2");
+        prices.add("3");
         setContentView(R.layout.main);
         AdapterActivity adapter = new AdapterActivity(this, items, qtys, prices);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -86,7 +89,15 @@ public class DongiActivity extends Activity {
         }
     }
     public void btnSelectContact(View view) {
+        //int qtyFirst=Integer.valueOf(qtys.toString());
         Intent intent = new Intent(this, ContactsActivity.class);
+        Object o = view.getTag(R.string.position);
+        String s = (String) view.getTag(R.string.position);
+        //intent.putExtra("position", (String) view.getTag(R.string.position));
+        int position = Integer.valueOf(s);
+//        Intent intent2=new Intent(this,NumberPickerCustom.class);
+        intent.putExtra("qtyFirst", qtys.get(position));
+//        startActivity(intent2);
         startActivity(intent);
     }
     public void editButtonClickHandler(View view) {
