@@ -78,6 +78,8 @@ public class ContactsActivity extends Activity{
 //    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 //        Toast.makeText(ContactsActivity.this, "number", Toast.LENGTH_SHORT).show();
 //    }
+
+
     public void btnBackToFoodList(View view ) {
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
