@@ -45,6 +45,19 @@ public class DongiActivity extends Activity {
                 startActivity(intent);
             }
         });
+//        Button btnAdd=(Button)findViewById(R.id.goToAddFoodRow);
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final Dialog dialog=new Dialog(context);
+//                dialog.setContentView(R.layout.changedata);
+//                dialog.setTitle("���� �������");
+//
+//
+//            }
+//        });
+//        Toast.makeText(getApplicationContext(), "Your toast message",
+//                Toast.LENGTH_LONG).show();
     }
     public void btnAddClickHandler(View view) {
         Intent intent = new Intent(this, ChangeOrAddFoodActivity.class);
