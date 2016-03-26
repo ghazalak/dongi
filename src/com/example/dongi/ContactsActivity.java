@@ -30,8 +30,6 @@ public class ContactsActivity extends Activity{
 //        NumberPickerCustom np = (NumberPickerCustom) NumberPickerCustom.findViewById(R.id.numberPicker1);
 //        np.setOnValueChangedListener(this);
 
-
-
         pickers = new ArrayList<NumberPicker>();
         final RelativeLayout formLayout = (RelativeLayout)findViewById(R.id.layout);
         NumberPicker picker = new NumberPicker(getApplicationContext());

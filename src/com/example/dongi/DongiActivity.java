@@ -26,17 +26,6 @@ public class DongiActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-//actionBar
-//        ActionBar actionBar=getActionBar();
-//        LayoutInflater inflater=getLayoutInflater();
-//        actionBar.setDisplayShowHomeEnabled(false);
-//        actionBar.setDisplayShowTitleEnabled(false);
-//        View actionbar_view=inflater.inflate(R.layout.actionbar_layout,null);
-//        actionBar.setCustomView(actionbar_view);
-//        actionBar.setDisplayShowCustomEnabled(true);
-
-
-
         Button btn = (Button) findViewById(R.id.takePic);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,19 +34,6 @@ public class DongiActivity extends Activity {
                 startActivity(intent);
             }
         });
-//        Button btnAdd=(Button)findViewById(R.id.goToAddFoodRow);
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                final Dialog dialog=new Dialog(context);
-//                dialog.setContentView(R.layout.changedata);
-//                dialog.setTitle("���� �������");
-//
-//
-//            }
-//        });
-//        Toast.makeText(getApplicationContext(), "Your toast message",
-//                Toast.LENGTH_LONG).show();
     }
     public void btnAddClickHandler(View view) {
         Intent intent = new Intent(this, ChangeOrAddFoodActivity.class);
@@ -65,14 +41,11 @@ public class DongiActivity extends Activity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
-
         if (resultCode == DongiActivity.RESULT_OK) {
             if (requestCode == 1) {
                 items.add(data.getStringExtra("nameBack"));
                 qtys.add(data.getStringExtra(("qtyBack")));
                 prices.add(data.getStringExtra("priceBack"));
-
             } else if (requestCode == 2) {
                 int position = Integer.valueOf(data.getStringExtra("position"));
                 items.set(position, data.getStringExtra("nameBack"));
@@ -89,15 +62,11 @@ public class DongiActivity extends Activity {
         }
     }
     public void btnSelectContact(View view) {
-        //int qtyFirst=Integer.valueOf(qtys.toString());
         Intent intent = new Intent(this, ContactsActivity.class);
         Object o = view.getTag(R.string.position);
         String s = (String) view.getTag(R.string.position);
-        //intent.putExtra("position", (String) view.getTag(R.string.position));
         int position = Integer.valueOf(s);
-//        Intent intent2=new Intent(this,NumberPickerCustom.class);
         intent.putExtra("qtyFirst", qtys.get(position));
-//        startActivity(intent2);
         startActivity(intent);
     }
     public void editButtonClickHandler(View view) {

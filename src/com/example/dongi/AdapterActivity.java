@@ -30,6 +30,7 @@ public class AdapterActivity extends ArrayAdapter<String> {
         TextView textView1 = (TextView) row.findViewById(R.id.foodQty);
         TextView textView2 = (TextView) row.findViewById(R.id.foodPrice);
         Button edit = (Button) row.findViewById(R.id.editFoodRow);
+
         textView.setText(ArrayName.get(position));
         textView1.setText(Arrayqty.get(position));
         textView2.setText(ArrayPrice.get(position));
