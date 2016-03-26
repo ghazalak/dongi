@@ -8,27 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ContactsActivity extends Activity{
-    ArrayList<NumberPicker> pickers;
 
+    ArrayList<NumberPicker> pickers;
     @Override
     public void onCreate(Bundle bdl){
         super.onCreate(bdl);
+
         setContentView(R.layout.contact);
         ActionBar actionBar=getActionBar();
         LayoutInflater inflater=getLayoutInflater();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
-        View actionbar_view=inflater.inflate(R.layout.actionbar_layout,null);
+        View actionbar_view=inflater.inflate(R.layout.actionbar_layout, null);
         actionBar.setCustomView(actionbar_view);
         actionBar.setDisplayShowCustomEnabled(true);
+<<<<<<< HEAD
 //        View rootView = inflater.inflate(R.layout.contact, container, false);
 //        NumberPickerCustom np = (NumberPickerCustom) NumberPickerCustom.findViewById(R.id.numberPicker1);
 //        np.setOnValueChangedListener(this);
+=======
+>>>>>>> 916b38b8dcccb07a54b710d2f32f759e3ae721b1
 
         pickers = new ArrayList<NumberPicker>();
         final RelativeLayout formLayout = (RelativeLayout)findViewById(R.id.layout);
@@ -87,6 +90,5 @@ public class ContactsActivity extends Activity{
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();
-
     }
 }

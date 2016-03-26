@@ -61,6 +61,7 @@ public class DongiActivity extends Activity {
 //                Toast.makeText(getApplicationContext(),"3",Toast.LENGTH_LONG).show();
         }
     }
+
     public void btnSelectContact(View view) {
         Intent intent = new Intent(this, ContactsActivity.class);
         Object o = view.getTag(R.string.position);
@@ -68,14 +69,17 @@ public class DongiActivity extends Activity {
         int position = Integer.valueOf(s);
         intent.putExtra("qtyFirst", qtys.get(position));
         startActivity(intent);
+
     }
     public void editButtonClickHandler(View view) {
         Intent intent = new Intent(this, ChangeOrAddFoodActivity.class);
-        intent.putExtra("name", (String)view.getTag(R.string.name));
         String s = (String) view.getTag(R.string.position);
         intent.putExtra("position", (String) view.getTag(R.string.position));
-        intent.putExtra("qty", (String)view.getTag(R.string.qty));
-        intent.putExtra("price", (String) view.getTag(R.string.price));
+        int position = Integer.valueOf(s);
+        intent.putExtra("name", items.get(position));
+        intent.putExtra("qty", qtys.get(position));
+        intent.putExtra("price", prices.get(position));
+
         startActivityForResult(intent,2);
     }
 }

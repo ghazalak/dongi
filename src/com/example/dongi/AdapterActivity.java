@@ -30,15 +30,17 @@ public class AdapterActivity extends ArrayAdapter<String> {
         TextView textView1 = (TextView) row.findViewById(R.id.foodQty);
         TextView textView2 = (TextView) row.findViewById(R.id.foodPrice);
         Button edit = (Button) row.findViewById(R.id.editFoodRow);
+<<<<<<< HEAD
+=======
+        Button selectContact = (Button) row.findViewById(R.id.addContact);
+>>>>>>> 916b38b8dcccb07a54b710d2f32f759e3ae721b1
 
         textView.setText(ArrayName.get(position));
         textView1.setText(Arrayqty.get(position));
         textView2.setText(ArrayPrice.get(position));
 
-        edit.setTag(R.string.name, ArrayName.get(position));
-        edit.setTag(R.string.qty, Arrayqty.get(position));
-        edit.setTag(R.string.price, ArrayPrice.get(position));
         edit.setTag(R.string.position, String.valueOf(position));
+        selectContact.setTag(R.string.position, String.valueOf(position));
         return row;
     }
 }
