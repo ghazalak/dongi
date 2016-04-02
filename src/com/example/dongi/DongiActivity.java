@@ -19,7 +19,7 @@ public class DongiActivity extends Activity {
     public void onCreate(Bundle bdl) {
         super.onCreate(bdl);
         items.add("salam");
-        qtys.add("2");
+        qtys.add("6");
         prices.add("3");
         setContentView(R.layout.main);
         AdapterActivity adapter = new AdapterActivity(this, items, qtys, prices);

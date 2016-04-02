@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,12 +27,6 @@ public class ContactsActivity extends Activity{
         View actionbar_view=inflater.inflate(R.layout.actionbar_layout, null);
         actionBar.setCustomView(actionbar_view);
         actionBar.setDisplayShowCustomEnabled(true);
-<<<<<<< HEAD
-//        View rootView = inflater.inflate(R.layout.contact, container, false);
-//        NumberPickerCustom np = (NumberPickerCustom) NumberPickerCustom.findViewById(R.id.numberPicker1);
-//        np.setOnValueChangedListener(this);
-=======
->>>>>>> 916b38b8dcccb07a54b710d2f32f759e3ae721b1
 
         pickers = new ArrayList<NumberPicker>();
         final RelativeLayout formLayout = (RelativeLayout)findViewById(R.id.layout);
@@ -43,22 +38,45 @@ public class ContactsActivity extends Activity{
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if (newVal > oldVal) {
-//                    if(picker.getId()>pickers.size()){
-//                        picker.
-//                    }
+                if (newVal < oldVal)
+                {
+                    if(picker.getId()<pickers.size())
+                    {
+                        int c=picker.getId()+1;
+                        pickers.get(c).setValue(pickers.get(c).getValue()+1);
+                    }else
+                    {
+                        Bundle extras = getIntent().getExtras();
+                        picker = new NumberPicker(getApplicationContext());
+                        pickers.add(picker);
+                        picker.setId(pickers.size()-1);
+                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        params.addRule(RelativeLayout.BELOW, picker.getId());
+                        picker.setLayoutParams(params);
+//                        int d=(picker.getId())-1;
+//                        int e=pickers.get(d).getValue();
+                        picker.setValue(1);
+                        //  picker.setValue(picker.getValue(picker.getId()-1));
+                        picker.setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
+                        picker.setMinValue(1);
+                        formLayout.addView(picker);
+                    }
                 }
-                if (newVal < oldVal) {
-                    Bundle extras = getIntent().getExtras();
-                    picker = new NumberPicker(getApplicationContext());
-                    pickers.add(picker);
-                    picker.setId(pickers.size());
-                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    params.addRule(RelativeLayout.BELOW, picker.getId()-1);
-                    picker.setLayoutParams(params);
-                    picker.setValue(oldVal - newVal);
-                    picker.setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
-                    formLayout.addView(picker);
+                if (newVal > oldVal) {
+                    if(picker.getId()>pickers.size()){
+                        int a=(picker.getId())+1;
+                        pickers.get(a).setValue(pickers.get(a).getValue()-1);
+                    }
+                    else if(picker.getId()==0)
+                    {
+                        Toast.makeText(getApplicationContext(),"wrong number",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        int b = picker.getId()-1;
+                        pickers.get(b).setValue(pickers.get(b).getValue()-1);
+                    }
+
                 }
             }
         });
