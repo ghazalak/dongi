@@ -35,6 +35,10 @@ public class DongiActivity extends Activity {
             }
         });
     }
+    public void btnContinueResult(View view) {
+        Intent intent = new Intent(this, ResultActivity.class);
+        startActivity(intent);
+    }
     public void btnAddClickHandler(View view) {
         Intent intent = new Intent(this, ChangeOrAddFoodActivity.class);
         startActivityForResult(intent, 1);
@@ -80,6 +84,7 @@ public class DongiActivity extends Activity {
         intent.putExtra("qty", qtys.get(position));
         intent.putExtra("price", prices.get(position));
 
-        startActivityForResult(intent,2);
+        startActivityForResult(intent, 2);
     }
+
 }

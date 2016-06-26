@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -35,69 +36,94 @@ public class ContactsActivity extends Activity{
         picker.setId(pickers.size());
         picker.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
         formLayout.addView(picker);
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if (newVal < oldVal)
-                {
-                    if(picker.getId()<pickers.size())
-                    {
-                        int c=picker.getId()+1;
-                        pickers.get(c).setValue(pickers.get(c).getValue()+1);
-                    }else
-                    {
-                        Bundle extras = getIntent().getExtras();
-                        picker = new NumberPicker(getApplicationContext());
-                        pickers.add(picker);
-                        picker.setId(pickers.size()-1);
-                        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                        params.addRule(RelativeLayout.BELOW, picker.getId());
-                        picker.setLayoutParams(params);
-//                        int d=(picker.getId())-1;
-//                        int e=pickers.get(d).getValue();
-                        picker.setValue(1);
-                        //  picker.setValue(picker.getValue(picker.getId()-1));
-                        picker.setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
-                        picker.setMinValue(1);
-                        formLayout.addView(picker);
-                    }
-                }
-                if (newVal > oldVal) {
-                    if(picker.getId()>pickers.size()){
-                        int a=(picker.getId())+1;
-                        pickers.get(a).setValue(pickers.get(a).getValue()-1);
-                    }
-                    else if(picker.getId()==0)
-                    {
-                        Toast.makeText(getApplicationContext(),"wrong number",Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-                        int b = picker.getId()-1;
-                        pickers.get(b).setValue(pickers.get(b).getValue()-1);
-                    }
-
-                }
-            }
-        });
-
-
-
-
+        picker.setOnValueChangedListener(onValueChangeHandler);
         if (getIntent()!= null) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
-                for (int i = 0; i < pickers.size();i++) {
-                    pickers.get(i).setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
-                    if(i==0)
-                    {
-                        pickers.get(i).setValue(Integer.valueOf(extras.getString("qtyFirst")));
-                    }
-                }
+                picker.setMinValue(1);
+                picker.setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
+                picker.setValue(Integer.valueOf(extras.getString("qtyFirst")));
             }
         }
     }
 
+    void reduceNumberPicker(int Id)
+    {
+        final NumberPicker picker = pickers.get(Id - 1);
+        if (picker.getValue() == 1)
+        {
+            final ViewGroup parentView = (ViewGroup) picker.getParent();
+            for (int i = Id ; i < pickers.size();i++)
+            {
+                pickers.get(i).setId(i );
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params.addRule(RelativeLayout.BELOW, pickers.get(i).getId() - 1);
+                pickers.get(i).setLayoutParams(params);
+            }
+
+            parentView.post(new Runnable() {
+                public void run() {
+                    parentView.removeView(picker);
+                }
+            });
+            pickers.remove(Id - 1);
+        }
+        else
+        {
+            picker.setValue(picker.getValue() - 1);
+        }
+    }
+
+    NumberPicker.OnValueChangeListener onValueChangeHandler = new NumberPicker.OnValueChangeListener() {
+        @Override
+        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            if (Math.abs(oldVal - newVal) > 1) {
+                picker.setOnValueChangedListener(null);
+                picker.setValue(oldVal);
+                picker.setOnValueChangedListener(onValueChangeHandler);
+                return;
+            }
+            final RelativeLayout formLayout = (RelativeLayout)findViewById(R.id.layout);
+            if (newVal < oldVal)
+            {
+                if(picker.getId()< pickers.size())
+                {
+                    int c = picker.getId() ;
+                    pickers.get(c).setValue(pickers.get(c).getValue()+ oldVal - newVal);
+                }else
+                {
+                    Bundle extras = getIntent().getExtras();
+                    picker = new NumberPicker(getApplicationContext());
+                    pickers.add(picker);
+                    picker.setId(pickers.size());
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.BELOW, picker.getId() - 1);
+                    picker.setLayoutParams(params);
+
+                    picker.setMaxValue(Integer.valueOf(extras.getString("qtyFirst")));
+                    picker.setMinValue(1);
+                    picker.setValue(oldVal - newVal);
+                    formLayout.addView(picker);
+                    picker.setOnValueChangedListener(onValueChangeHandler);
+                }
+            }
+            if (newVal > oldVal) {
+                int pickerId = picker.getId();
+                if(pickerId >= pickers.size()){
+                    reduceNumberPicker(pickerId - 1);
+                }
+                else if(picker.getId()==0)
+                {
+                    Toast.makeText(getApplicationContext(),"wrong number",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    reduceNumberPicker(pickerId + 1);
+                }
+
+            }
+        }
+    };
     //    @Override
 //    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 //        Toast.makeText(ContactsActivity.this, "number", Toast.LENGTH_SHORT).show();

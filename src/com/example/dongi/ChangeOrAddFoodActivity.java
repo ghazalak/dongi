@@ -9,10 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+
 public class ChangeOrAddFoodActivity extends Activity {
     boolean nameCheck=true;
     boolean qtyCheck=true;
     boolean priceCheck=true;
+//    ArrayList<String> NAME = new ArrayList<String>();
+//    ArrayList<Float> QTY = new ArrayList<Float>();
+//    ArrayList<Float> PRICE = new ArrayList<Float>();
 
     String position;
     @Override
@@ -53,79 +58,54 @@ public class ChangeOrAddFoodActivity extends Activity {
                         txtName.setError(":(");
                         nameCheck=false;
                         return;
-                    }else nameCheck=true;
+                    }else {
+//                        NAME.add(strName);
+                        nameCheck=true;
+                    }
                     txtQty = (EditText) findViewById(R.id.qtyAddEditFood);
                     strQty = txtQty.getText().toString();
                     if (TextUtils.isEmpty(strQty)) {
                         txtQty.setError(":(");
                         qtyCheck = false;
                         return;
-                    }else qtyCheck=true;
+                    }else {
+//                        QTY.add(Float.valueOf(strQty.trim()).floatValue());
+                        qtyCheck=true;
+                    }
                     txtPrice = (EditText) findViewById(R.id.priceAddEditFood);
                     strPrice = txtPrice.getText().toString();
                     if (TextUtils.isEmpty(strPrice)) {
                         txtPrice.setError(":(");
                         priceCheck = false;
                         return;
-                    }else priceCheck=true;
+                    }else {
+//                        PRICE.add(Float.valueOf(strPrice.trim()).floatValue());
+                        priceCheck=true;
+                    }
                 }
                 while (nameCheck==false || qtyCheck==false || priceCheck==false);
-                Button btn=(Button) findViewById(R.id.btnTaeedAddEditFood);
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        EditText txtName;
-                        String strName;
-                        EditText txtQty ;
-                        String strQty ;
-                        EditText txtPrice;
-                        String strPrice;
-                        do {
-                            txtName = (EditText) findViewById(R.id.NameAddEditFood);
-                            strName = txtName.getText().toString();
-                            if(TextUtils.isEmpty(strName)) {
-                                txtName.setError(":(");
-                                nameCheck=false;
-                                return;
-                            }else nameCheck=true;
-                            txtQty = (EditText) findViewById(R.id.qtyAddEditFood);
-                            strQty = txtQty.getText().toString();
-                            if (TextUtils.isEmpty(strQty)) {
-                                txtQty.setError(":(");
-                                qtyCheck = false;
-                                return;
-                            }else qtyCheck=true;
-                            txtPrice = (EditText) findViewById(R.id.priceAddEditFood);
-                            strPrice = txtPrice.getText().toString();
-                            if (TextUtils.isEmpty(strPrice)) {
-                                txtPrice.setError(":(");
-                                priceCheck = false;
-                                return;
-                            }else priceCheck=true;
-                        }while (nameCheck==false || qtyCheck==false || priceCheck==false);
 
-                        if(nameCheck==true && qtyCheck==true && priceCheck==true){
-                            Intent intent = new Intent();
-                            intent.putExtra("nameBack", strName);
-                            intent.putExtra("qtyBack", strQty);
-                            intent.putExtra("priceBack", strPrice);
-                            intent.putExtra("position", position);
-                            if (getParent() == null) {
-                                setResult(DongiActivity.RESULT_OK, intent);
-                            }
-                            else {
-                                getParent().setResult(DongiActivity.RESULT_OK, intent);
-                            }
-                            finish();
+                    if(nameCheck==true && qtyCheck==true && priceCheck==true){
+                        Intent intent = new Intent();
+                        intent.putExtra("nameBack", strName);
+                        intent.putExtra("qtyBack", strQty);
+                        intent.putExtra("priceBack", strPrice);
+                        intent.putExtra("position", position);
+                        if (getParent() == null) {
+                            setResult(DongiActivity.RESULT_OK, intent);
                         }
+                        else {
+                            getParent().setResult(DongiActivity.RESULT_OK, intent);
+                        }
+                        finish();
                     }
-                });
             }
-            public void btnBackToFoodList(View view) {
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_CANCELED, returnIntent);
-                finish();
-            }
+
         });
+    }
+    public void btnBackToFoodList(View view) {
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 }
