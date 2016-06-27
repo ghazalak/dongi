@@ -11,16 +11,31 @@ import java.util.ArrayList;
 
 public class AdapterActivity extends ArrayAdapter<String> {
     Context maincontext;
-    ArrayList<String> ArrayName;
-    ArrayList<String> Arrayqty;
-    ArrayList<String> ArrayPrice;
-    public AdapterActivity(Context context, ArrayList<String> items, ArrayList<String> qtys, ArrayList<String> prices){
-        super(context,R.layout.list_row,prices);
+    static ArrayList<Food> foods;
+    public AdapterActivity(Context context, ArrayList<Food> foods){
+        super(context,R.layout.list_row);
         maincontext = context;
-        ArrayName = items;
-        Arrayqty =qtys;
-        ArrayPrice =prices;
+        this.foods = foods;
     }
+
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return foods.size();///////return size of list
+    }
+
+//    @Override
+//    public Food getItem(int position) {
+//        // TODO Auto-generated method stub
+//        return foods.get(position);///// dont return null here
+//    }
+
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;/////////return position as itemID
+    }
+
     @Override
     public View getView(int position, View view, ViewGroup viewGroup){
         LayoutInflater layoutInflater = LayoutInflater.from(maincontext);
@@ -31,10 +46,10 @@ public class AdapterActivity extends ArrayAdapter<String> {
         TextView textView2 = (TextView) row.findViewById(R.id.foodPrice);
         Button edit = (Button) row.findViewById(R.id.editFoodRow);
         Button selectContact = (Button) row.findViewById(R.id.addContact);
-
-        textView.setText(ArrayName.get(position));
-        textView1.setText(Arrayqty.get(position));
-        textView2.setText(ArrayPrice.get(position));
+        Food f = foods.get(position);
+        textView.setText(f.name);
+        textView1.setText(String.valueOf(f.qty));
+        textView2.setText(String.valueOf(f.price));
 
         edit.setTag(R.string.position, String.valueOf(position));
         selectContact.setTag(R.string.position, String.valueOf(position));

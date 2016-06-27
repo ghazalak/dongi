@@ -5,26 +5,19 @@
              android:id="@+id/tableLayout">
     <TableRow android:layout_width="match_parent"
               android:layout_height="match_parent">
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                >
             <TextView
-                    android:textSize="20sp"
-                    android:id="@+id/peopleResult"
+
+                    android:id="@+id/Name"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_alignParentRight="true"
                     />
             <TextView
-                    android:textSize="20dp"
-                    android:id="@+id/priceResult"
+
+                    android:id="@+id/Dong"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="5dp"
                     />
 
-        </RelativeLayout>
+
     </TableRow>
 </TableLayout>

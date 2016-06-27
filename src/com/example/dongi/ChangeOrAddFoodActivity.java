@@ -15,9 +15,6 @@ public class ChangeOrAddFoodActivity extends Activity {
     boolean nameCheck=true;
     boolean qtyCheck=true;
     boolean priceCheck=true;
-//    ArrayList<String> NAME = new ArrayList<String>();
-//    ArrayList<Float> QTY = new ArrayList<Float>();
-//    ArrayList<Float> PRICE = new ArrayList<Float>();
 
     String position;
     @Override
@@ -59,7 +56,6 @@ public class ChangeOrAddFoodActivity extends Activity {
                         nameCheck=false;
                         return;
                     }else {
-//                        NAME.add(strName);
                         nameCheck=true;
                     }
                     txtQty = (EditText) findViewById(R.id.qtyAddEditFood);
@@ -69,7 +65,6 @@ public class ChangeOrAddFoodActivity extends Activity {
                         qtyCheck = false;
                         return;
                     }else {
-//                        QTY.add(Float.valueOf(strQty.trim()).floatValue());
                         qtyCheck=true;
                     }
                     txtPrice = (EditText) findViewById(R.id.priceAddEditFood);
@@ -79,7 +74,6 @@ public class ChangeOrAddFoodActivity extends Activity {
                         priceCheck = false;
                         return;
                     }else {
-//                        PRICE.add(Float.valueOf(strPrice.trim()).floatValue());
                         priceCheck=true;
                     }
                 }
