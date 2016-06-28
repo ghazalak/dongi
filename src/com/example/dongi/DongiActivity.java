@@ -8,7 +8,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.*;
-
 import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,24 +76,24 @@ public class DongiActivity extends Activity {
     @Override
     public void onCreate(Bundle bdl) {
         super.onCreate(bdl);
-        Food f = new Food("برگ", 2, 20000);
-        f.persons.add("hamid");
-        f.persons.add("ghazal");
-        foods.add(f);
-         f = new Food("کوبیده", 3, 10000);
-        f.persons.add("sarah");
-        f.persons.add("tala");
-        f.persons.add("khani");
-        foods.add(f);
-         f = new Food("نوشابه", 3, 1000);
-        f.persons.add("hamid");
-        f.persons.add("sarah");
-        f.persons.add("khani");
-        foods.add(f);
-        f = new Food("ماست", 2, 3000);
-        f.persons.add("sarah");
-        f.persons.add("tala");
-        foods.add(f);
+//        Food f = new Food("برگ", 2, 20000);
+//        f.persons.add("hamid");
+//        f.persons.add("ghazal");
+//        foods.add(f);
+//         f = new Food("کوبیده", 3, 10000);
+//        f.persons.add("sarah");
+//        f.persons.add("tala");
+//        f.persons.add("khani");
+//        foods.add(f);
+//         f = new Food("نوشابه", 3, 1000);
+//        f.persons.add("hamid");
+//        f.persons.add("sarah");
+//        f.persons.add("khani");
+//        foods.add(f);
+//        f = new Food("ماست", 2, 3000);
+//        f.persons.add("sarah");
+//        f.persons.add("tala");
+//        foods.add(f);
         setContentView(R.layout.main);
         adapter = new AdapterActivity(this, foods);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -110,7 +109,6 @@ public class DongiActivity extends Activity {
         });
     }
     public void btnContinueResult(View view) {
-
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putParcelableArrayListExtra("foods", foods);
         startActivity(intent);
@@ -123,7 +121,6 @@ public class DongiActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == DongiActivity.RESULT_OK) {
             if (requestCode == 1) {
-
                 Food f = new Food(data.getStringExtra("nameBack"), data.getIntExtra("qtyBack", 0), data.getIntExtra("priceBack", 0));
                 foods.add(f);
             } else if (requestCode == 2) {
@@ -132,6 +129,10 @@ public class DongiActivity extends Activity {
                 f.name = data.getStringExtra("nameBack");
                 f.qty = data.getIntExtra("qtyBack", 0);
                 f.price = data.getIntExtra("priceBack", 0);
+            } else if (requestCode == 3) {
+                int position = data.getIntExtra("position", 0);
+                Food f = foods.get(position);
+                f.persons = new ArrayList<String>(Arrays.asList(data.getExtras().getStringArray("persons")));
             }
             adapter.notifyDataSetChanged();
 //            AdapterActivity adapter = new AdapterActivity(this, foods);
@@ -142,12 +143,15 @@ public class DongiActivity extends Activity {
 
     public void btnSelectContact(View view) {
         Intent intent = new Intent(this, ContactsActivity.class);
-        Object o = view.getTag(R.string.position);
         String s = (String) view.getTag(R.string.position);
         int position = Integer.valueOf(s);
         Food f = foods.get(position);
-        intent.putExtra("qtyFirst", f.qty);
-        startActivity(intent);
+        Bundle b=new Bundle();
+        b.putStringArray("persons", f.persons.toArray(new String[0]));
+        b.putInt("position", position);
+        intent.putExtras(b);
+        //intent.putExtra("persons", f.persons);
+        startActivityForResult(intent, 3);
 
     }
     public void editButtonClickHandler(View view) {

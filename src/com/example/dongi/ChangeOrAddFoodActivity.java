@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
-
 import java.util.ArrayList;
 
 public class ChangeOrAddFoodActivity extends Activity {
@@ -82,8 +81,8 @@ public class ChangeOrAddFoodActivity extends Activity {
                     if(nameCheck==true && qtyCheck==true && priceCheck==true){
                         Intent intent = new Intent();
                         intent.putExtra("nameBack", strName);
-                        intent.putExtra("qtyBack", strQty);
-                        intent.putExtra("priceBack", strPrice);
+                        intent.putExtra("qtyBack", Integer.parseInt(strQty));
+                        intent.putExtra("priceBack", Integer.parseInt(strPrice));
                         intent.putExtra("position", position);
                         if (getParent() == null) {
                             setResult(DongiActivity.RESULT_OK, intent);

@@ -1,35 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:id="@+id/layout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-        >
-    <!--<Button android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:text="بازگشت"-->
-            <!--android:id="@+id/addPeopleBack"-->
-            <!--android:onClick="btnBackToFoodListFromContacts"-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:layout_marginLeft="30dp"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--/>-->
-    <!--<Button android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_marginRight="30dp"-->
-            <!--android:text="ثبت تغییرات"-->
-            <!--android:id="@+id/addPeopleContinue"-->
-            <!--android:layout_marginTop="20dp"-->
-    <!--android:layout_below="@id/addPeopleContinue"-->
-            <!--/>-->
-    <!--<com.example.dongi.NumberPickerCustom-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/numberPicker1"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--min="0"-->
-            <!--max="10"-->
-            <!--/>-->
-</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical" >
+    <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+    </ListView>
+</LinearLayout>

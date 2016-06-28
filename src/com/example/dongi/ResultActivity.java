@@ -3,9 +3,7 @@ package com.example.dongi;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Hashtable;
 

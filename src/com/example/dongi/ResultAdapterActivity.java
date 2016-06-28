@@ -52,9 +52,6 @@ public class ResultAdapterActivity extends ArrayAdapter<String> {
 
         textView.setText(name);
         textView1.setText(dong);
-
-
-
         return row;
     }
 }
